@@ -24,18 +24,22 @@ public class LoginPage {
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']") private WebElement Alertmessage;
 	@FindBy(xpath="//span[text()='7rmart supermarket']") private WebElement Homepagetext;
     
-	public void enterUsernameonUsernamefield(String username)
+	public LoginPage enterUsernameonUsernamefield(String username)
     {
 		UsernameElementfield.sendKeys(username);
+		return this;
     }
-    public void enterPasswordfield(String pwd)
+    public LoginPage enterPasswordfield(String pwd)
     {
     	Passwordfield.sendKeys(pwd);
+    	return this;
     }
-    public void clickonSignInButton()
+    public HomePage clickonSignInButton()
     
     {
+    	
     	SignInButton.click();
+    	return new HomePage(driver);
     	
     }
     public boolean VerifyHomePageLoaded()
@@ -49,18 +53,16 @@ public class LoginPage {
     	return Alertmessage.isDisplayed();
     }
     
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	
-	public void loginByUsingExcelData() throws IOException
+	
+	public HomePage loginByUsingExcelData() throws IOException
 	{
 		String username=ExcelUtility.readStringData(1, 0,"LoginPage");
 		String pwd=ExcelUtility.readStringData(1, 1, "LoginPage");
 		UsernameElementfield.sendKeys(username);
 		Passwordfield.sendKeys(pwd);
 		SignInButton.click();
+		return new HomePage(driver);
 	}
 
 }

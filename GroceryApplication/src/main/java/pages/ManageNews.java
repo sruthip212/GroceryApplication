@@ -27,37 +27,46 @@ public class ManageNews {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") private WebElement updateAlertMessage;
 	@FindBy(xpath="//i[@class='fas fa-trash-alt']") private WebElement deleteButton;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") private WebElement deleteAlertMsg;
+	@FindBy(xpath="//center[text()='.........RESULT NOT FOUND.......']") private WebElement searchResultNotExisting;
 	
 	
 	
-	public void addNews(String news)
+	public ManageNews addNews(String news)
 	{
 		newButton.click();
 		inputText.sendKeys(news);
 		saveButton.click();
+		return this;
 		
 	}
     public boolean isAlertDisplayed()
     {
     	return alertMessage.isDisplayed();
     }
-    public void searchNews(String search)
+    public ManageNews searchNews(String search)
     {
     	searchButton.click();
     	inputSearchString.sendKeys(search);
     	inputSearchButton.click();
+    	return this;
     	
     }
-    public void reset()
+    public boolean isTextDisplayed()
+    {
+    	return searchResultNotExisting.isDisplayed();
+    }
+    public ManageNews reset()
     {
     	resetButton.click();
+    	return this;
     }
-    public void updateNews(String update)
+    public ManageNews updateNews(String update)
     {
     	editButton.click();
     	inputtextEdit.clear();
     	inputtextEdit.sendKeys(update);
     	updateButton.click();
+    	return this;
     	
     }
    public boolean isUpdateAlertDisplayed()
@@ -65,10 +74,11 @@ public class ManageNews {
     	return updateAlertMessage.isDisplayed();
     }
     
-    public void deleteNews()
+    public ManageNews deleteNews()
     {
     	deleteButton.click();
     	driver.switchTo().alert().accept();
+    	return this;
     }
     public boolean isDeleteAlertDisplayed()
     {

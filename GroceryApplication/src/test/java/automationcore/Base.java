@@ -26,7 +26,7 @@ public class Base {
 	WaitUtitility wait=new WaitUtitility();
   
 	public WebDriver driver;
-	  @BeforeMethod
+	  @BeforeMethod(alwaysRun=true)
 	  @Parameters("browser")
 	  public void initializeBrowser(String browser) throws Exception
 	  {
@@ -54,7 +54,7 @@ public class Base {
 		  wait.implicitWait(driver);
 	  }
 
-	  @AfterMethod
+	  @AfterMethod(alwaysRun=true)
 	  public void driverQuit(ITestResult itestresult) throws IOException {
 		  if(itestresult.getStatus()==ITestResult.FAILURE)
 		  {

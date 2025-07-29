@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtitility {
 	
-	public static int IMPLICITWAIT_DURATION=10;
+	public static int IMPLICITWAIT_DURATION=15;
 	public static int EXPLICITWAIT=30;
 	public static int FLUENTWAIT=2;
 	public void fluentWaitElements(WebDriver driver, WebElement element, String attribute, String attributeValue,
@@ -35,6 +35,12 @@ public class WaitUtitility {
 		wait.until(ExpectedConditions.elementToBeSelected(element));
 		
 	}
+	public void waitForWebElementTitleContains(WebDriver driver) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAIT));
+		wait.until(ExpectedConditions.titleContains(null));
+	}
+	
+
 	
 	public void implicitWait(WebDriver driver)
 	{
