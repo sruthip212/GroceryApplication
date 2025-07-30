@@ -23,7 +23,6 @@ public class ManageCategoryTest extends Base{
 	  {
 		  login=new LoginPage(driver);
 		  home=login.loginByUsingExcelData();
-		
 		  Category=home.clickOnManageCategory().addCategory("apple");
 		  boolean isAlertmessageDisplayed=Category.isAlertDisplayed();
 		  Assert.assertTrue(isAlertmessageDisplayed, "Alert not Displayed");
