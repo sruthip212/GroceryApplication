@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import constants.Constant;
 import utilities.FileUploadUtility;
 import utilities.GeneralUtilities;
 
@@ -67,7 +68,7 @@ public class ManageCategory {
 		else {
 			radioButtonLeftMenu.click();
 		}
-		String imagepath = "C:\\Users\\91974\\git\\GroceryApplication\\GroceryApplication\\src\\test\\resources\\Images\\download.jpg";
+		String imagepath =Constant.File_Path;
 		file.fileUploadusingSendkeys(choosefile, imagepath);
 		general.clickJavaScriptExecutor(SaveButton, driver);
 		return this;
